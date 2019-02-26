@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row">
         <h3 class="text-center text-primary">
-            Albums
+            {{ request.user.username }} <b>Albums</b>
             <hr>
         </h3>
         {% if albums %}
@@ -12,7 +12,7 @@
         <div class="col-sm-3">
             <div class="thumbnail">
                 <a href="{% url 'musicapp:detail' album.id %}">
-                <img src="{{ album.cover.url }}" class="img img-responsive" style="height: 250px; width: 200px;">
+                <img src="{{ album.cover.url }}" class="img img-responsive" style="height: 250px; width: 200px;" alt="">
                 </a>
                     <div class="caption">
                     <h4>{{ album.name }}</h4>
@@ -22,6 +22,9 @@
                             <input type="hidden" name="album_id" value="{{ album.id }}">
                             <a href="{% url 'musicapp:delete_album' album.id %}">
                             <span class="glyphicon glyphicon-trash"></span>
+                            </a>&nbsp;&nbsp;
+                            <a href="">
+                                <span class="glyphicon glyphicon-pencil"></span>
                             </a>
                         </form>
                 </div>
